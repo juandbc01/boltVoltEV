@@ -763,6 +763,237 @@ footer{
 }
 .footer-links a:hover{color:rgba(255,255,255,0.75)}
 
+/* ═══════════════════════════════════════════════════
+   HAMBURGER BUTTON
+═══════════════════════════════════════════════════ */
+.nb-hamburger{
+  display:none;flex-direction:column;justify-content:center;align-items:center;
+  gap:5px;background:none;border:none;cursor:pointer;padding:8px;
+  width:40px;height:40px;
+}
+.nb-hamburger span{
+  display:block;width:22px;height:2px;background:var(--black);
+  border-radius:2px;transition:all .3s ease;transform-origin:center;
+}
+.nb-hamburger.open span:nth-child(1){transform:translateY(7px) rotate(45deg)}
+.nb-hamburger.open span:nth-child(2){opacity:0;transform:scaleX(0)}
+.nb-hamburger.open span:nth-child(3){transform:translateY(-7px) rotate(-45deg)}
+
+/* mobile nav drawer */
+.nb-mobile-nav{
+  display:none;position:fixed;top:68px;left:0;right:0;z-index:999;
+  background:rgba(255,255,255,0.98);backdrop-filter:blur(20px);
+  border-bottom:1px solid var(--gray-200);
+  flex-direction:column;padding:16px 5%;gap:4px;
+  transform:translateY(-10px);opacity:0;
+  transition:opacity .25s ease,transform .25s ease;
+}
+.nb-mobile-nav.open{opacity:1;transform:translateY(0)}
+.nb-mobile-nav a{
+  font-family:var(--font-d);font-size:10px;font-weight:500;
+  letter-spacing:3px;text-transform:uppercase;
+  color:var(--gray-700);text-decoration:none;
+  padding:14px 0;border-bottom:1px solid var(--gray-200);
+  transition:color .2s;
+}
+.nb-mobile-nav a:last-child{border-bottom:none}
+.nb-mobile-nav a:hover{color:var(--black)}
+
+/* hamburger for bv-nav too */
+.bv-hamburger{
+  display:none;flex-direction:column;justify-content:center;align-items:center;
+  gap:5px;background:none;border:none;cursor:pointer;padding:8px;
+  width:40px;height:40px;
+}
+.bv-hamburger span{
+  display:block;width:22px;height:2px;background:rgba(255,255,255,0.8);
+  border-radius:2px;transition:all .3s ease;transform-origin:center;
+}
+.bv-hamburger.open span:nth-child(1){transform:translateY(7px) rotate(45deg)}
+.bv-hamburger.open span:nth-child(2){opacity:0;transform:scaleX(0)}
+.bv-hamburger.open span:nth-child(3){transform:translateY(-7px) rotate(-45deg)}
+.bv-mobile-nav{
+  display:none;position:fixed;top:60px;left:0;right:0;z-index:999;
+  background:rgba(6,6,9,0.97);backdrop-filter:blur(20px);
+  border-bottom:1px solid rgba(255,255,255,0.1);
+  flex-direction:column;padding:16px 5%;gap:4px;
+  transform:translateY(-10px);opacity:0;
+  transition:opacity .25s ease,transform .25s ease;
+}
+.bv-mobile-nav.open{opacity:1;transform:translateY(0)}
+.bv-mobile-nav a{
+  font-family:var(--font-d);font-size:10px;font-weight:500;
+  letter-spacing:3px;text-transform:uppercase;
+  color:rgba(255,255,255,0.6);text-decoration:none;
+  padding:14px 0;border-bottom:1px solid rgba(255,255,255,0.08);
+  transition:color .2s;
+}
+.bv-mobile-nav a:last-child{border-bottom:none}
+.bv-mobile-nav a:hover{color:#fff}
+
+/* ═══════════════════════════════════════════════════
+   SEARCH OVERLAY
+═══════════════════════════════════════════════════ */
+.srch-overlay{
+  position:fixed;inset:0;z-index:2000;
+  background:rgba(10,10,18,0.92);backdrop-filter:blur(16px);
+  display:flex;flex-direction:column;align-items:center;
+  padding-top:120px;
+  opacity:0;pointer-events:none;transition:opacity .25s ease;
+}
+.srch-overlay.open{opacity:1;pointer-events:all}
+.srch-box{
+  width:min(640px,90vw);position:relative;
+}
+.srch-input{
+  width:100%;background:rgba(255,255,255,0.07);
+  border:1px solid rgba(255,255,255,0.2);
+  border-radius:4px;
+  font-family:var(--font-d);font-size:15px;font-weight:500;
+  letter-spacing:2px;color:#fff;
+  padding:18px 56px 18px 22px;
+  outline:none;transition:border-color .2s;
+}
+.srch-input::placeholder{color:rgba(255,255,255,0.3);font-size:13px;letter-spacing:3px}
+.srch-input:focus{border-color:rgba(255,255,255,0.5)}
+.srch-icon{
+  position:absolute;right:18px;top:50%;transform:translateY(-50%);
+  color:rgba(255,255,255,0.4);pointer-events:none;
+}
+.srch-hint{
+  font-family:var(--font-d);font-size:9px;letter-spacing:3px;
+  color:rgba(255,255,255,0.3);text-transform:uppercase;
+  margin-top:14px;text-align:center;
+}
+.srch-results{
+  width:min(640px,90vw);margin-top:24px;
+  display:flex;flex-direction:column;gap:8px;
+  max-height:55vh;overflow-y:auto;
+}
+.srch-result-item{
+  background:rgba(255,255,255,0.06);border:1px solid rgba(255,255,255,0.12);
+  border-radius:4px;padding:14px 18px;cursor:pointer;
+  display:flex;align-items:center;gap:14px;
+  transition:background .2s,border-color .2s;
+}
+.srch-result-item:hover{background:rgba(255,255,255,0.12);border-color:rgba(255,255,255,0.28)}
+.srch-result-img{width:56px;height:42px;object-fit:cover;border-radius:3px;flex-shrink:0}
+.srch-result-img-placeholder{width:56px;height:42px;background:rgba(255,255,255,0.08);border-radius:3px;flex-shrink:0}
+.srch-result-info{flex:1;min-width:0}
+.srch-result-brand{font-family:var(--font-d);font-size:8px;letter-spacing:3px;color:rgba(255,255,255,0.4);text-transform:uppercase}
+.srch-result-name{font-family:var(--font-d);font-size:11px;font-weight:600;color:#fff;letter-spacing:1px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.srch-result-cat{font-size:11px;color:rgba(255,255,255,0.4);margin-top:2px}
+.srch-close{
+  position:fixed;top:24px;right:5%;
+  background:none;border:none;color:rgba(255,255,255,0.5);
+  font-size:26px;cursor:pointer;line-height:1;
+  transition:color .2s;
+}
+.srch-close:hover{color:#fff}
+.srch-empty{
+  font-family:var(--font-d);font-size:10px;letter-spacing:3px;
+  color:rgba(255,255,255,0.3);text-transform:uppercase;text-align:center;
+  padding:32px 0;
+}
+
+/* ═══════════════════════════════════════════════════
+   CART PANEL
+═══════════════════════════════════════════════════ */
+.cart-overlay{
+  position:fixed;inset:0;z-index:1900;background:rgba(0,0,0,0.5);
+  opacity:0;pointer-events:none;transition:opacity .3s;
+}
+.cart-overlay.open{opacity:1;pointer-events:all}
+.cart-panel{
+  position:fixed;top:0;right:0;bottom:0;z-index:1901;
+  width:min(420px,96vw);
+  background:#fff;
+  display:flex;flex-direction:column;
+  transform:translateX(100%);transition:transform .35s cubic-bezier(.22,.61,.36,1);
+  box-shadow:-8px 0 40px rgba(0,0,0,0.15);
+}
+.cart-panel.open{transform:translateX(0)}
+.cart-header{
+  display:flex;align-items:center;justify-content:space-between;
+  padding:22px 24px;border-bottom:1px solid var(--gray-200);
+  flex-shrink:0;
+}
+.cart-title{
+  font-family:var(--font-d);font-size:11px;font-weight:700;
+  letter-spacing:4px;text-transform:uppercase;color:var(--black);
+}
+.cart-close-btn{
+  background:none;border:none;cursor:pointer;
+  color:var(--gray-500);font-size:22px;line-height:1;
+  transition:color .2s;padding:4px;
+}
+.cart-close-btn:hover{color:var(--black)}
+.cart-body{
+  flex:1;overflow-y:auto;padding:16px 24px;
+}
+.cart-empty-msg{
+  display:flex;flex-direction:column;align-items:center;justify-content:center;
+  height:100%;gap:12px;
+  font-family:var(--font-d);font-size:9px;letter-spacing:3px;
+  color:var(--gray-500);text-transform:uppercase;text-align:center;
+}
+.cart-empty-msg svg{opacity:0.25;width:48px;height:48px}
+.cart-item{
+  display:flex;align-items:center;gap:12px;
+  padding:14px 0;border-bottom:1px solid var(--gray-200);
+}
+.cart-item:last-child{border-bottom:none}
+.cart-item-img{width:64px;height:48px;object-fit:cover;border-radius:3px;flex-shrink:0;background:var(--gray-200)}
+.cart-item-info{flex:1;min-width:0}
+.cart-item-brand{font-family:var(--font-d);font-size:8px;letter-spacing:2px;color:var(--gray-500);text-transform:uppercase}
+.cart-item-name{font-family:var(--font-d);font-size:10px;font-weight:600;color:var(--black);letter-spacing:1px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.cart-item-cat{font-size:11px;color:var(--gray-500);margin-top:2px}
+.cart-item-remove{
+  background:none;border:none;cursor:pointer;
+  color:var(--gray-500);font-size:18px;line-height:1;
+  padding:4px;transition:color .2s;flex-shrink:0;
+}
+.cart-item-remove:hover{color:#c0392b}
+.cart-footer{
+  padding:20px 24px;border-top:1px solid var(--gray-200);flex-shrink:0;
+  display:flex;flex-direction:column;gap:10px;
+}
+.cart-count-line{
+  font-family:var(--font-d);font-size:9px;letter-spacing:3px;
+  color:var(--gray-500);text-transform:uppercase;text-align:center;
+}
+.cart-wa-btn{
+  width:100%;background:var(--black);color:#fff;
+  font-family:var(--font-d);font-size:10px;font-weight:700;
+  letter-spacing:3px;text-transform:uppercase;
+  border:none;padding:16px;cursor:pointer;
+  display:flex;align-items:center;justify-content:center;gap:10px;
+  transition:background .2s;border-radius:2px;
+}
+.cart-wa-btn:hover{background:var(--gray-700)}
+.cart-wa-btn svg{width:16px;height:16px;fill:#fff;flex-shrink:0}
+.cart-clear-btn{
+  width:100%;background:transparent;color:var(--gray-500);
+  font-family:var(--font-d);font-size:8px;font-weight:500;
+  letter-spacing:3px;text-transform:uppercase;
+  border:1px solid var(--gray-300);padding:10px;cursor:pointer;
+  transition:all .2s;border-radius:2px;
+}
+.cart-clear-btn:hover{border-color:var(--black);color:var(--black)}
+
+/* Add-to-cart button on product cards */
+.pcard-atc{
+  display:flex;align-items:center;justify-content:center;gap:8px;
+  width:100%;background:var(--black);color:#fff;
+  font-family:var(--font-d);font-size:8px;font-weight:700;
+  letter-spacing:3px;text-transform:uppercase;
+  border:none;padding:11px 16px;cursor:pointer;
+  transition:background .2s,transform .15s;margin-top:8px;
+}
+.pcard-atc:hover{background:var(--gray-700);transform:translateY(-1px)}
+.pcard-atc.in-cart{background:var(--gray-500)}
+.pcard-atc svg{width:13px;height:13px;fill:#fff;flex-shrink:0}
+
 /* ─── RESPONSIVE ─────────────────────────────────── */
 @media(max-width:860px){
   .nb-links{display:none}
@@ -1248,6 +1479,8 @@ footer{
 @media(max-width:768px){
   .bv-nav{padding:0 18px}
   .bv-nav-links{display:none}
+  .bv-hamburger{display:flex}
+  .bv-btn-wa-nav{display:none}
   .bv-hero{grid-template-columns:1fr;padding-top:68px;padding-left:0}
   .bv-left{padding:40px 24px 0;align-items:center;text-align:center}
   .bv-hscene{width:310px;height:400px}
@@ -1283,17 +1516,30 @@ footer{
     <li><a href="#contact" id="nl-ct">Contacto</a></li>
   </ul>
   <div class="bv-nav-right">
-    <button class="bv-icon-btn" aria-label="Buscar"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/></svg></button>
+    <button class="bv-icon-btn" aria-label="Buscar" id="btnOpenSearch" onclick="openSearch()"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/></svg></button>
     <div class="bv-cart-wrap">
-      <button class="bv-icon-btn" aria-label="Carrito"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="9" cy="21" r="1"/><circle cx="20" cy="21" r="1"/><path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"/></svg></button>
-      <span class="bv-cart-badge">2</span>
+      <button class="bv-icon-btn" aria-label="Carrito" onclick="openCart()"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="9" cy="21" r="1"/><circle cx="20" cy="21" r="1"/><path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"/></svg></button>
+      <span class="bv-cart-badge" id="cartBadge" style="display:none">0</span>
     </div>
     <a href="https://wa.me/16618009739" class="bv-btn-wa-nav" target="_blank">
       <svg viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/><path d="M11.999 2C6.477 2 2 6.477 2 12c0 1.89.525 3.659 1.436 5.168L2 22l4.992-1.407A9.951 9.951 0 0 0 12 22c5.523 0 10-4.477 10-10S17.523 2 11.999 2zm.001 18a8 8 0 0 1-4.084-1.122l-.292-.174-3.03.854.854-3.03-.174-.292A8 8 0 1 1 12 20z"/></svg>
       WhatsApp
     </a>
+    <button class="bv-hamburger" id="bvHamburger" onclick="toggleBvMenu()" aria-label="Menú">
+      <span></span><span></span><span></span>
+    </button>
   </div>
 </nav>
+
+<!-- MOBILE NAV DRAWER (bv-nav) -->
+<div class="bv-mobile-nav" id="bvMobileNav">
+  <a href="#" onclick="closeBvMenu()">Inicio</a>
+  <a href="#catalog" id="mnl-cat" onclick="closeBvMenu()">Catálogo</a>
+  <a href="#catalog" onclick="closeBvMenu()">Accesorios</a>
+  <a href="#why" onclick="closeBvMenu()">Tecnología</a>
+  <a href="#showroom" id="mnl-sr" onclick="closeBvMenu()">Showroom</a>
+  <a href="#contact" id="mnl-ct" onclick="closeBvMenu()">Contacto</a>
+</div>
 
 <!-- HERO -->
 <section class="bv-hero">
@@ -1741,10 +1987,10 @@ footer{
   <div class="sec-eyebrow" id="c-eye">Our Collection</div>
   <h2 class="sec-h2" id="c-h2">Find Your Electric Ride</h2>
   <div class="filters">
-    <button class="filt on" onclick="filterCat('all',this)" id="f-all">All</button>
-    <button class="filt" onclick="filterCat('scooter',this)" id="f-sc">Scooters</button>
-    <button class="filt" onclick="filterCat('ebike',this)" id="f-eb">E-Bikes</button>
-    <button class="filt" onclick="filterCat('moto',this)" id="f-mo">Motorcycles</button>
+    <button class="filt on" onclick="filterCat('all',this)" id="f-all" data-cat="all">All</button>
+    <button class="filt" onclick="filterCat('scooter',this)" id="f-sc" data-cat="scooter">Scooters</button>
+    <button class="filt" onclick="filterCat('ebike',this)" id="f-eb" data-cat="ebike">E-Bikes</button>
+    <button class="filt" onclick="filterCat('moto',this)" id="f-mo" data-cat="moto">Motorcycles</button>
   </div>
   <div class="pgrid" id="pgrid"></div>
 </section>
@@ -1963,6 +2209,10 @@ function renderCatalog() {
         + '<div class="pcard-desc">' + desc + '</div>'
         + '<div class="pcard-specs">' + specsHtml + '</div>'
         + '<button class="pcard-wa" id="' + pid + '">' + WA_SVG + askTxt + '</button>'
+        + '<button class="pcard-atc" data-pid="' + p.id + '" onclick="addToCart(' + p.id + ')">'
+        + '<svg viewBox="0 0 24 24" fill="currentColor" width="13" height="13"><path d="M11 9h2V6h3V4h-3V1h-2v3H8v2h3v3zm-4 9c-1.1 0-1.99.9-1.99 2S5.9 22 7 22s2-.9 2-2-.9-2-2-2zm10 0c-1.1 0-1.99.9-1.99 2s.89 2 1.99 2 2-.9 2-2-.9-2-2-2zm-8.9-5h7.45c.75 0 1.41-.41 1.75-1.03l3.86-7.01L19.42 4l-3.86 7H8.53L4.27 2H1v2h2l3.6 7.59L5.25 14c-.16.28-.25.61-.25.96C5 16.1 5.9 17 7 17h12v-2H7.42c-.13 0-.25-.11-.25-.25l.03-.12.9-1.63z"/></svg>'
+        + '<span>' + (lang === 'es' ? 'Agregar al carrito' : 'Add to Cart') + '</span>'
+        + '</button>'
       + '</div>'
     + '</div>';
   }
@@ -1987,6 +2237,9 @@ function renderCatalog() {
       el.onclick = function(){ bvLightboxOpen(el.src, el.alt); };
     })(list[k]);
   }
+
+  /* sync cart state on newly rendered buttons */
+  if(typeof updateAtcButtons === 'function') updateAtcButtons();
 }
 
 /* ─── FILTER ─── */
@@ -2231,6 +2484,279 @@ function toggleLang() {
 
 /* ─── INIT ─── */
 applyLang();
+</script>
+
+<!-- ═══ SEARCH OVERLAY ═══ -->
+<div class="srch-overlay" id="srchOverlay">
+  <button class="srch-close" onclick="closeSearch()" aria-label="Cerrar">&#x2715;</button>
+  <div class="srch-box">
+    <input class="srch-input" id="srchInput" type="text" placeholder="Buscar por marca, modelo, categoría…" oninput="runSearch(this.value)" autocomplete="off">
+    <span class="srch-icon"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/></svg></span>
+  </div>
+  <div class="srch-hint" id="srchHint">Escribe para filtrar · Presiona ESC para cerrar</div>
+  <div class="srch-results" id="srchResults"></div>
+</div>
+
+<!-- ═══ CART OVERLAY + PANEL ═══ -->
+<div class="cart-overlay" id="cartOverlay" onclick="closeCart()"></div>
+<div class="cart-panel" id="cartPanel">
+  <div class="cart-header">
+    <span class="cart-title" id="cartTitle">Carrito</span>
+    <button class="cart-close-btn" onclick="closeCart()" aria-label="Cerrar">&#x2715;</button>
+  </div>
+  <div class="cart-body" id="cartBody">
+    <div class="cart-empty-msg" id="cartEmpty">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="9" cy="21" r="1"/><circle cx="20" cy="21" r="1"/><path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"/></svg>
+      <span id="cartEmptyMsg">Tu carrito está vacío</span>
+    </div>
+  </div>
+  <div class="cart-footer" id="cartFooter" style="display:none">
+    <div class="cart-count-line" id="cartCountLine"></div>
+    <button class="cart-wa-btn" onclick="cartSendWA()">
+      <svg viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/><path d="M11.999 2C6.477 2 2 6.477 2 12c0 1.89.525 3.659 1.436 5.168L2 22l4.992-1.407A9.951 9.951 0 0 0 12 22c5.523 0 10-4.477 10-10S17.523 2 11.999 2zm.001 18a8 8 0 0 1-4.084-1.122l-.292-.174-3.03.854.854-3.03-.174-.292A8 8 0 1 1 12 20z"/></svg>
+      <span id="cartWaBtn">Consultar por WhatsApp</span>
+    </button>
+    <button class="cart-clear-btn" onclick="clearCart()" id="cartClearBtn">Vaciar carrito</button>
+  </div>
+</div>
+
+<script>
+/* ═══════════════════════════════════════════════════
+   CART
+═══════════════════════════════════════════════════ */
+var cartItems = [];
+
+function openCart(){
+  document.getElementById('cartPanel').classList.add('open');
+  document.getElementById('cartOverlay').classList.add('open');
+  document.body.style.overflow='hidden';
+}
+function closeCart(){
+  document.getElementById('cartPanel').classList.remove('open');
+  document.getElementById('cartOverlay').classList.remove('open');
+  document.body.style.overflow='';
+}
+
+function addToCart(productId){
+  for(var i=0;i<products.length;i++){
+    if(products[i].id===productId){
+      var already=false;
+      for(var j=0;j<cartItems.length;j++){
+        if(cartItems[j].id===productId){already=true;break;}
+      }
+      if(!already) cartItems.push(products[i]);
+      break;
+    }
+  }
+  renderCart();
+  updateCartBadge();
+  updateAtcButtons();
+  openCart();
+}
+
+function removeFromCart(productId){
+  cartItems=cartItems.filter(function(p){return p.id!==productId;});
+  renderCart();
+  updateCartBadge();
+  updateAtcButtons();
+}
+
+function clearCart(){
+  cartItems=[];
+  renderCart();
+  updateCartBadge();
+  updateAtcButtons();
+}
+
+function updateCartBadge(){
+  var badge=document.getElementById('cartBadge');
+  if(!badge) return;
+  if(cartItems.length===0){
+    badge.style.display='none';
+  } else {
+    badge.style.display='flex';
+    badge.textContent=cartItems.length;
+  }
+}
+
+function updateAtcButtons(){
+  var btns=document.querySelectorAll('.pcard-atc');
+  for(var i=0;i<btns.length;i++){
+    var pid=parseInt(btns[i].getAttribute('data-pid'));
+    var inCart=cartItems.some(function(p){return p.id===pid;});
+    btns[i].classList.toggle('in-cart',inCart);
+    btns[i].querySelector('span').textContent = inCart ? '✓ En el carrito' : (lang==='es' ? 'Agregar al carrito' : 'Add to Cart');
+  }
+}
+
+function renderCart(){
+  var body=document.getElementById('cartBody');
+  var empty=document.getElementById('cartEmpty');
+  var footer=document.getElementById('cartFooter');
+  var countLine=document.getElementById('cartCountLine');
+
+  if(cartItems.length===0){
+    empty.style.display='flex';
+    footer.style.display='none';
+    body.innerHTML='';
+    var emptyDiv=document.createElement('div');
+    emptyDiv.className='cart-empty-msg';
+    emptyDiv.innerHTML='<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="9" cy="21" r="1"/><circle cx="20" cy="21" r="1"/><path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"/></svg><span>'+(lang==='es'?'Tu carrito está vacío':'Your cart is empty')+'</span>';
+    body.appendChild(emptyDiv);
+    return;
+  }
+
+  footer.style.display='flex';
+  var n=cartItems.length;
+  countLine.textContent=n + (lang==='es' ? (n===1?' producto seleccionado':' productos seleccionados') : (n===1?' item selected':' items selected'));
+
+  var html='';
+  for(var i=0;i<cartItems.length;i++){
+    var p=cartItems[i];
+    var imgHtml=p.img ? '<img class="cart-item-img" src="'+p.img+'" alt="'+p.name+'" loading="lazy">' : '<div class="cart-item-img"></div>';
+    var catMap={scooter:'Scooter',ebike:'E-Bike',moto:'Motorcycle'};
+    html+='<div class="cart-item">'
+      +imgHtml
+      +'<div class="cart-item-info">'
+        +'<div class="cart-item-brand">'+p.brand+'</div>'
+        +'<div class="cart-item-name">'+p.name+'</div>'
+        +'<div class="cart-item-cat">'+(catMap[p.cat]||p.cat)+'</div>'
+      +'</div>'
+      +'<button class="cart-item-remove" onclick="removeFromCart('+p.id+')" title="Eliminar">&#x2715;</button>'
+    +'</div>';
+  }
+  body.innerHTML=html;
+}
+
+function cartSendWA(){
+  if(cartItems.length===0) return;
+  var intro = lang==='es'
+    ? '¡Hola! Estoy interesado en los siguientes vehículos eléctricos de BoltVoltEV:\n\n'
+    : 'Hi! I am interested in the following electric vehicles from BoltVoltEV:\n\n';
+  var lines='';
+  for(var i=0;i<cartItems.length;i++){
+    lines+='• '+cartItems[i].brand+' '+cartItems[i].name+'\n';
+  }
+  var outro = lang==='es'
+    ? '\n¿Me pueden dar más información y disponibilidad?'
+    : '\nCan you give me more information and availability?';
+  openWA(intro+lines+outro);
+}
+
+/* ═══════════════════════════════════════════════════
+   SEARCH
+═══════════════════════════════════════════════════ */
+function openSearch(){
+  var ov=document.getElementById('srchOverlay');
+  ov.classList.add('open');
+  document.body.style.overflow='hidden';
+  setTimeout(function(){document.getElementById('srchInput').focus();},120);
+  runSearch('');
+}
+function closeSearch(){
+  document.getElementById('srchOverlay').classList.remove('open');
+  document.body.style.overflow='';
+  document.getElementById('srchInput').value='';
+  document.getElementById('srchResults').innerHTML='';
+}
+
+function runSearch(q){
+  var results=document.getElementById('srchResults');
+  var hint=document.getElementById('srchHint');
+  q=(q||'').toLowerCase().trim();
+
+  var catMap={scooter:['scooter','scooters'],ebike:['ebike','e-bike','ebikes','bicicleta'],moto:['moto','motorcycle','motocicleta','motorcycles']};
+
+  var matched=products.filter(function(p){
+    if(!q) return true;
+    if(p.name.toLowerCase().indexOf(q)>=0) return true;
+    if(p.brand.toLowerCase().indexOf(q)>=0) return true;
+    if(p.cat.toLowerCase().indexOf(q)>=0) return true;
+    var aliases=catMap[p.cat]||[];
+    for(var a=0;a<aliases.length;a++){if(aliases[a].indexOf(q)>=0) return true;}
+    var desc=(lang==='en'?p.en:p.es)||'';
+    if(desc.toLowerCase().indexOf(q)>=0) return true;
+    for(var s=0;s<p.specs.length;s++){
+      if((p.specs[s][0]+''+p.specs[s][1]).toLowerCase().indexOf(q)>=0) return true;
+    }
+    return false;
+  });
+
+  if(matched.length===0){
+    results.innerHTML='<div class="srch-empty">'+(lang==='es'?'Sin resultados para "'+q+'"':'No results for "'+q+'"')+'</div>';
+    hint.textContent='';
+    return;
+  }
+
+  hint.textContent=(lang==='es'?matched.length+' resultado'+(matched.length===1?'':'s'):matched.length+' result'+(matched.length===1?'':'s'));
+
+  var html='';
+  for(var i=0;i<matched.length;i++){
+    var p=matched[i];
+    var catLabel={scooter:'Scooter',ebike:'E-Bike',moto:'Motorcycle'};
+    var imgHtml=p.img?'<img class="srch-result-img" src="'+p.img+'" alt="'+p.name+'" loading="lazy">':'<div class="srch-result-img-placeholder"></div>';
+    html+='<div class="srch-result-item" data-pid="'+p.id+'">'
+      +imgHtml
+      +'<div class="srch-result-info">'
+        +'<div class="srch-result-brand">'+p.brand+'</div>'
+        +'<div class="srch-result-name">'+p.name+'</div>'
+        +'<div class="srch-result-cat">'+(catLabel[p.cat]||p.cat)+'</div>'
+      +'</div>'
+    +'</div>';
+  }
+  results.innerHTML=html;
+
+  var items=results.querySelectorAll('.srch-result-item');
+  for(var k=0;k<items.length;k++){
+    (function(el,prod){
+      el.onclick=function(){
+        closeSearch();
+        var target=document.getElementById('catalog');
+        if(target) target.scrollIntoView({behavior:'smooth'});
+        setTimeout(function(){
+          currentFilter=prod.cat;
+          renderCatalog();
+          var fbtns=document.querySelectorAll('.filt');
+          for(var b=0;b<fbtns.length;b++) fbtns[b].classList.remove('on');
+          var catFilt=document.querySelector('.filt[data-cat="'+prod.cat+'"]');
+          if(catFilt) catFilt.classList.add('on');
+        },500);
+      };
+    })(items[k],matched[k]);
+  }
+}
+
+document.addEventListener('keydown',function(e){
+  if(e.key==='Escape'){
+    if(document.getElementById('srchOverlay').classList.contains('open')) closeSearch();
+    if(document.getElementById('cartPanel').classList.contains('open')) closeCart();
+  }
+});
+
+/* ═══════════════════════════════════════════════════
+   HAMBURGER — bv-nav (dark navbar)
+═══════════════════════════════════════════════════ */
+function toggleBvMenu(){
+  var btn=document.getElementById('bvHamburger');
+  var nav=document.getElementById('bvMobileNav');
+  var isOpen=nav.style.display==='flex';
+  if(isOpen){
+    nav.classList.remove('open');
+    btn.classList.remove('open');
+    setTimeout(function(){nav.style.display='none';},250);
+  } else {
+    nav.style.display='flex';
+    requestAnimationFrame(function(){nav.classList.add('open');});
+    btn.classList.add('open');
+  }
+}
+function closeBvMenu(){
+  var btn=document.getElementById('bvHamburger');
+  var nav=document.getElementById('bvMobileNav');
+  nav.classList.remove('open');
+  btn.classList.remove('open');
+  setTimeout(function(){nav.style.display='none';},250);
+}
 </script>
 </body>
 </html>
